@@ -2,12 +2,12 @@
 /**
  * @Author: Pop Alexandru
  * @Date:   2017-09-25 23:28:57
- * @Last Modified by:   Pop Alexandru
- * @Last Modified time: 2017-09-26 00:54:04
+ * @Last Modified by:   alexandru pop
+ * @Last Modified time: 2017-09-26 12:25:50
  */
 
 function updateValue(){
-	$jData = json_decode(file_get_contents('test-ajax.php'));
+	$jasonData = json_decode(file_get_contents('test-ajax.php'));
 	$oldValue =$_POST['old'];
 	$updateValue = $_POST['updated'];
 	$id = $_POST['id'];
@@ -16,10 +16,8 @@ function updateValue(){
 	$expl = explode("-", $expl);
 	$firstIndex = $expl[0];
 	$secondIndex = $expl[1];
-	$jData->results[$firstIndex][$secondIndex] = (!empty(trim($updateValue))) 
-		? $updateValue 
-		: $jData->results[$firstIndex][$secondIndex];
-	file_put_contents('test-ajax.php', json_encode($jData));
+	$jasonData->results[$firstIndex][$secondIndex] = (!empty(trim($updateValue))) ? $updateValue : $jasonData->results[$firstIndex][$secondIndex];
+	file_put_contents('test-ajax.php', json_encode($jasonData));
 }
 
 if (!isset($_POST['callBack'])){
